@@ -15,7 +15,7 @@ import com.example.cheapshark.modelo.Videojuegos;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerHolder>implements View.OnClickListener{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerHolder>implements View.OnClickListener,View.OnLongClickListener{
 
     List<Videojuegos> listVideojuegos;
     private View.OnClickListener listenerClick;
@@ -76,9 +76,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
+    public void setOnLongClick(View.OnLongClickListener listenerLong) {
+        this.listenerLong = listenerLong;
 
-    public boolean onLongClick(View.OnLongClickListener view) {
-        return true;
+    }
+
+
+    public boolean onLongClick(View view) {
+        if(listenerLong != null) {
+            listenerLong.onLongClick(view);
+        }
+        return false;
     }
     // Primero se crea la clase que hereda de ViewHolder.
     // Esta clase tiene como finalidad recrear los elementos de la vista del layout

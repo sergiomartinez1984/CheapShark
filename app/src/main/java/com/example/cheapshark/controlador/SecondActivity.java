@@ -68,11 +68,13 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(thirdView);
             }
         });
-        recAdapter.onLongClick(new View.OnLongClickListener() {
+
+        recAdapter.setOnLongClick(new View.OnLongClickListener() {
+
             @Override
             public boolean onLongClick(View view) {
                 Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_LONG).show();
-                return true;
+                return false;
             }
         });
 
