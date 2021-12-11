@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#595656"
+    android:backgroundTint="#706C6C"
+    tools:context="com.example.cheapshark.controlador.MainActivity">
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="168dp"
+        android:layout_height="56dp"
+        android:backgroundTint="#070707"
+        android:text="Sign In"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonRegister"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password"
+        app:layout_constraintVertical_bias="0.359" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="169dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#0B0B0B"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="214dp"
+        android:layout_height="63dp"
+        android:backgroundTint="#F4ECEC"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toEndOf="@+id/textViewContraseña"
+        app:layout_constraintTop_toBottomOf="@+id/Users"
+        app:layout_constraintVertical_bias="0.039"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="416dp"
+        android:layout_height="280dp"
+        android:backgroundTint="#EAD9D9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.192"
+        app:srcCompat="@drawable/retro1" />
+
+    <TextView
+        android:id="@+id/textViewUsuario"
+        android:layout_width="60dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="68dp"
+        android:foregroundTint="#DC0C0C"
+        android:text="User"
+        android:textAlignment="textStart"
+        android:textColor="#E30606"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textViewContraseña"
+        android:layout_width="97dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:foregroundTint="#D80A0A"
+        android:text="Password"
+        android:textColor="#E60B0B"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Users"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <EditText
+        android:id="@+id/Users"
+        android:layout_width="217dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="SpeakableTextPresentCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>
