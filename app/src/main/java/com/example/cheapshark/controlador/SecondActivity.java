@@ -2,6 +2,7 @@ package com.example.cheapshark.controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 import adapters.RecyclerViewAdapter;
 
 public class SecondActivity extends AppCompatActivity {
+    private androidx.appcompat.view.ActionMode mActionMode;
+    int posicion;
     RecyclerView recyclerView;
     RecyclerViewAdapter recAdapter;
     HttpConnectVideojuego httpvideojuego = new HttpConnectVideojuego();
@@ -39,8 +42,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         checkPreferences();
         for(int i = 0;i <= 20 ;i ++){
-            ArrayVideojuegos.add(new Videojuegos("title","10","https://cdn.cloudflare.steamstatic.com/steam/apps/35320/capsule_sm_120.jpg?t=1572519365"));
-           // new taskConnections().execute(String.valueOf(i));
+           new taskConnections().execute(String.valueOf(i));
         }
 
 
@@ -78,12 +80,48 @@ public class SecondActivity extends AppCompatActivity {
 
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_LONG).show();
-                return false;
+                if ( mActionMode != null) {
+                    return false;
+                }
+                posicion = recyclerView.getChildAdapterPosition(view);
+                mActionMode = startSupportActionMode(mActionCallback);
+                    return true;
+
             }
         });
-
     }
+
+    //Metodo al realizar un longCLick en el item, que abre el menu de accion
+    private ActionMode.Callback mActionCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mode.getMenuInflater().inflate(R.menu.menu_action_delete, menu);
+            mode.setTitle("Action Menu");
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        //Al hacer click en el icono de la palelera,eliminamos el objeto seleccionado de la lista
+        //Luego indicamos al adaptador que la informacion a cambiado
+        //Como la lista se crea automaticamente al crear la actividad, cada vez que realizamos un intent hacia la actividad
+        // o reiniciamos la App, el recyclerView aparece al completo
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            ArrayVideojuegos.remove(posicion);
+            recAdapter.notifyDataSetChanged();
+            return true;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+
+        }
+
+    };
     //metodo que chequea las preferencias,por defecto le tengo activado el modo oscuro
     public void checkPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SecondActivity.this);
@@ -94,6 +132,7 @@ public class SecondActivity extends AppCompatActivity {
                 getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
     }
+
     //onResume sirve para mostrar las preferencias guardadas sin tener que salir de la aplicacion
     @Override
     public void onResume(){

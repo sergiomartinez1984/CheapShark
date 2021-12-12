@@ -38,6 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_videojuegos, parent, false);
         RecyclerHolder recyclerHolder = new RecyclerHolder(view);
         view.setOnClickListener(this);
+        view.setOnLongClickListener(this);
 
         return recyclerHolder;
     }
