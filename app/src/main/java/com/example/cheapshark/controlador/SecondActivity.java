@@ -41,7 +41,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         checkPreferences();
-        for(int i = 0;i <= 20 ;i ++){
+        for(int i = 0;i <= 60 ;i ++){
            new taskConnections().execute(String.valueOf(i));
         }
 

@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.cheapshark.R;
 
+import id.ionbit.ionalert.IonAlert;
+
 public class MainActivity extends AppCompatActivity {
     //Declaracion de variables
     EditText Users;
@@ -85,12 +87,10 @@ public class MainActivity extends AppCompatActivity {
     }
     //metodo para mostrar un Alertdialog personalizado,para el control de error en la toma de datos
     public void alertDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Campos Vacios");
-        builder.setMessage("Los campos no pueden estar vacios,revisalos por favor");
-        builder.setPositiveButton("Aceptar", null);
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        new IonAlert(this, IonAlert.WARNING_TYPE)
+                .setTitleText("Atencion")
+                .setContentText("Algunos campos estan vacios,por favor compruebalo!")
+                .setConfirmText("Aceptar")
+                .show();
     }
 }
