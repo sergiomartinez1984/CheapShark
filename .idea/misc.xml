@@ -11,11 +11,15 @@
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2215" />
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2215" />
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/layout/activity_preferencias.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/layout/activity_second.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/layout/activity_third.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/layout/item_list_personajes.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/layout/item_list_videojuegos.xml" value="0.33" />
+        <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/xml/cambiar_modo.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/souns/AndroidStudioProjects/cheapshark/app/src/main/res/xml/root_preferences.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

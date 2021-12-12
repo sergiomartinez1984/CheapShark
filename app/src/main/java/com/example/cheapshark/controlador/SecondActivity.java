@@ -1,15 +1,19 @@
 package com.example.cheapshark.controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import androidx.preference.PreferenceManager;
 
 import com.example.cheapshark.R;
 import com.example.cheapshark.io.HttpConnectVideojuego;
@@ -33,6 +37,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        checkPreferences();
         for(int i = 0;i <= 20 ;i ++){
             ArrayVideojuegos.add(new Videojuegos("title","10","https://cdn.cloudflare.steamstatic.com/steam/apps/35320/capsule_sm_120.jpg?t=1572519365"));
            // new taskConnections().execute(String.valueOf(i));
@@ -79,19 +84,49 @@ public class SecondActivity extends AppCompatActivity {
         });
 
     }
+    //metodo que chequea las preferencias,por defecto le tengo activado el modo oscuro
+    public void checkPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SecondActivity.this);
+        boolean tema = sharedPreferences.getBoolean("oscuro",true);
+            if (tema){
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }else{
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+    }
+    //onResume sirve para mostrar las preferencias guardadas sin tener que salir de la aplicacion
+    @Override
+    public void onResume(){
+        super.onResume();
+        checkPreferences();
+    }
 
-    //Todo 2. (ver clase HttpConnectPokemon.java ) Al ser una tarea que implica una espera,
-    // como es la respuesta del servidor, por ello se tiene que llevar a cabo a través de un hilo
-    // secundario.
+    //mostrara el menu o lo ocultara dependiendo de la seleccion
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+
+    }
+    //seleccionamos la opcion de nuestro menu,y nos llevara a una nueva actividad creada para las preferencias
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.menuId) {
+            Intent inten = new Intent(SecondActivity.this, Preferencias.class);
+            startActivity(inten);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    // el TaskConnection hará la peticion,como es una tarea que implica una espera,
+    // como es la respuesta del servidor, se tiene que llevar a cabo a través de un hilo secundario.
+
     private class taskConnections extends AsyncTask<String,Void,String> {
 
         @Override
         protected String doInBackground(String... strings) {
             String result = null;
             result = httpvideojuego.getRequest(strings[0]);
-
-
-
 
             return result;
         }

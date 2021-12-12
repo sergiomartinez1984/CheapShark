@@ -1,11 +1,14 @@
 package com.example.cheapshark.controlador;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.PreferenceManager;
 
 import com.bumptech.glide.Glide;
 import com.example.cheapshark.R;
@@ -42,6 +45,22 @@ public class ThirdActivity extends AppCompatActivity {
                     .error(R.drawable.retro1)
                     .into(fotillo);
 
+    }
+    //Llamamos a nuestro metodo check preferences para poder acceder a cambiar las preferencias tambien desde
+    //la actividad tres
+    public void checkPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ThirdActivity.this);
+        boolean tema = sharedPreferences.getBoolean("oscuro",true);
+        if (tema){
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }else{
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        checkPreferences();
+    }
 }
 

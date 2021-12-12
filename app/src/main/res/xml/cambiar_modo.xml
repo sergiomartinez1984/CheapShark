@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Preference category">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="oscuro"
+            android:title="Cambiar modo/oscuro/claro" />
+    </PreferenceCategory>
+</PreferenceScreen>
